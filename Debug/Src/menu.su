@@ -1,0 +1,4 @@
+menu.c:78:6:SerialUpload	48	static
+menu.c:142:6:SerialDownload	8	static
+menu.c:153:6:FLASH_Init	8	static
+menu.c:167:6:Main_Menu	32	static
