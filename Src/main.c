@@ -42,6 +42,8 @@
 /* USER CODE BEGIN Includes */
 #include "stm32f4xx_it.h"
 #include "menu.h"
+#include "common.h"
+
 
 
 /* USER CODE END Includes */
@@ -119,8 +121,12 @@ int main(void)
 
 	  int clicked = get_clicked();
 	  if (clicked){
-		  //char buffer[]="Klikitud! ja kas töötab???\n";
-		  //HAL_UART_Transmit(&huart1, (uint8_t*)buffer, sizeof(buffer)-1 ,  HAL_MAX_DELAY);
+		  char buffer[]="Klikitud! ja kas töötab???\n, kordja on:";
+		  uint8_t knumb[3];
+		  Int2Str((uint8_t*)&knumb, get_kordaja());
+		  HAL_UART_Transmit(&huart1, (uint8_t*)buffer, sizeof(buffer)-1 ,  HAL_MAX_DELAY);
+		  HAL_UART_Transmit(&huart1, (uint8_t*)&knumb, sizeof(knumb)-1 ,  HAL_MAX_DELAY);
+
 
 		  reset_clicked();
 
