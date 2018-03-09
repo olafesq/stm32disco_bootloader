@@ -173,10 +173,12 @@ void Serial_PutString2(uint8_t *p_string)
 }
 
 void Serial_PutString(char *p_string){
-	uint16_t length = sizeof(p_string)-1;
-	length = (uint16_t)strlen(p_string);
+	//uint16_t length = sizeof(p_string)-1;
+	uint16_t length = (uint16_t)strlen(p_string);
 	//char buffer[]="koik on ok";
-	HAL_UART_Transmit(&huart1, (uint8_t*)p_string, length, TX_TIMEOUT);
+	while (HAL_UART_GetState(&huart1)!=HAL_UART_STATE_READY);
+	while(HAL_UART_Transmit_IT(&huart1, (uint8_t*)p_string, length)==HAL_BUSY);
+	//HAL_UART_Transmit(&huart1, (uint8_t*)p_string, length, TX_TIMEOUT);
 	//HAL_UART_Transmit(&huart1, (uint8_t*)buffer, sizeof(buffer)-1 ,  HAL_MAX_DELAY);
 
 }

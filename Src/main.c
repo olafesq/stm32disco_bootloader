@@ -124,8 +124,11 @@ int main(void)
 		  char buffer[]="Klikitud! ja kas töötab???\n, kordja on:";
 		  uint8_t knumb[3];
 		  Int2Str((uint8_t*)&knumb, get_kordaja());
-		  HAL_UART_Transmit(&huart1, (uint8_t*)buffer, sizeof(buffer)-1 ,  HAL_MAX_DELAY);
-		  HAL_UART_Transmit(&huart1, (uint8_t*)&knumb, sizeof(knumb)-1 ,  HAL_MAX_DELAY);
+		  //HAL_UART_Transmit_IT(&huart1, (uint8_t*)buffer, sizeof(buffer)-1 ,  HAL_MAX_DELAY);
+		  while (HAL_UART_GetState(&huart1)!=HAL_UART_STATE_READY);
+		  while(HAL_UART_Transmit_IT(&huart1, (uint8_t*)buffer, sizeof(buffer)-1 )== HAL_BUSY) ;
+		  while (HAL_UART_GetState(&huart1)!=HAL_UART_STATE_READY);
+		  HAL_UART_Transmit_IT(&huart1, (uint8_t*)&knumb, sizeof(knumb)-1 );
 
 
 		  reset_clicked();
@@ -208,17 +211,20 @@ static void MX_CRC_Init(void)
 
 }
 
+
+
 /* USART1 init function */
 static void MX_USART1_UART_Init(void)
 {
+
   huart1.Instance = USART1;
-  huart1.Init.BaudRate = 2400 ;
+  huart1.Init.BaudRate = 4800;
   huart1.Init.WordLength = UART_WORDLENGTH_8B;
   huart1.Init.StopBits = UART_STOPBITS_1;
   huart1.Init.Parity = UART_PARITY_NONE;
   huart1.Init.Mode = UART_MODE_TX_RX;
   huart1.Init.HwFlowCtl = UART_HWCONTROL_NONE;
-  huart1.Init.OverSampling = UART_OVERSAMPLING_8;
+  huart1.Init.OverSampling = UART_OVERSAMPLING_16;
   if (HAL_UART_Init(&huart1) != HAL_OK)
   {
     _Error_Handler(__FILE__, __LINE__);

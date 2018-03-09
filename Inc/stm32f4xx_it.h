@@ -51,9 +51,13 @@ void SVC_Handler(void);
 void PendSV_Handler(void);
 void SysTick_Handler(void);
 void EXTI0_IRQHandler(void);
+void USART1_IRQHandler(void);
+
+/* USER CODE BEGIN  */
 int get_kordaja(void);
-int get_clicked();
-void reset_clicked();
+int get_clicked(void);
+void reset_clicked(void);
+  /* USER CODE END  */
 
 #ifdef __cplusplus
 }

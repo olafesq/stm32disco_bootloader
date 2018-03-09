@@ -1,7 +1,7 @@
 [PreviousGenFiles]
-HeaderPath=D:/Documents/TTY/FormulaStudent/CanBootloader/fsteamtallinn-fs-stm32-can-bootloader-39410fc65196/fsteamtallinn-fs-stm32-can-bootloader-39410fc65196/stm32diso_bootlaoader/Inc
+HeaderPath=D:/Documents/TTY/FormulaStudent/CanBootloader/stm32diso_bootlaoader/Inc
 HeaderFiles=stm32f4xx_it.h;stm32f4xx_hal_conf.h;main.h;
-SourcePath=D:/Documents/TTY/FormulaStudent/CanBootloader/fsteamtallinn-fs-stm32-can-bootloader-39410fc65196/fsteamtallinn-fs-stm32-can-bootloader-39410fc65196/stm32diso_bootlaoader/Src
+SourcePath=D:/Documents/TTY/FormulaStudent/CanBootloader/stm32diso_bootlaoader/Src
 SourceFiles=stm32f4xx_it.c;stm32f4xx_hal_msp.c;main.c;
 
 [PreviousLibFiles]

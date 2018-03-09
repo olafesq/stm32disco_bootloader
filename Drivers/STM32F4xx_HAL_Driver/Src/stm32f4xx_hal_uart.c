@@ -648,7 +648,6 @@ HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, u
         }
         tmp = (uint16_t*) pData;
         huart->Instance->DR = (*tmp & (uint16_t)0x01FF);
-
         if(huart->Init.Parity == UART_PARITY_NONE)
         {
           pData +=2U;

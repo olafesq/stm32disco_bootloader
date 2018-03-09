@@ -99,7 +99,7 @@ void SerialUpload(void){
   Serial_PutString("Starting to reprogram flash..\n");
 
   int finished = 0;
-  uint8_t offset = 0;
+  //uint8_t offset = 0;
   uint8_t nack = 19;
   uint8_t ack = 17;
   uint32_t flashAddr = APPLICATION_ADDRESS;
